@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ServerDB.master.cs" Inherits="ServerDB" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <script src="JavaScript.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div>
+                <ul>
+                    <li><a href="HomePage.aspx">Home Page</a></li>
+                    <li><a href="SignUp.aspx">SignUp</a></li>
+                    <li id="admin-link" class="loged-out"><a  href="AdminPage.aspx" >AdminPage</a></li>
+                    <li style="float: right;" class="loged-in" id="Li3">
+                        <asp:Button ID="Button1" runat="server" Text="sign in" OnClick="Button1_Click" UseSubmitBehavior="false" CausesValidation="false" /></li>
+                    <li runat="server" id="Li2" style="float: right;" class="loged-out">
+                        <a id="Userlbl" runat="server"></a></li>
+                    <li runat="server" id="Li1" style="float: right;">
+                        <asp:Button ID="LogOut" runat="server" Text="logout" OnClick="LogOut_Click" CausesValidation="false" UseSubmitBehavior="false" CssClass="loged-out" /></li>
+                </ul>
+                <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto" HorizontalAlign="Center" Visible="false" CssClass="Panel">
+                    <div style="float: right; background-color: red;">
+                        <asp:Button ID="Button2" runat="server" UseSubmitBehavior="false" Text="&#x2716;" Style="background-color: transparent; border: 0;" OnClick="Button2_Click" CausesValidation="false" />
+                    </div>
+                    <h1>Sign In</h1>
+                    <asp:TextBox ID="txtUserName" runat="server" placeholder="Enter UserName" ValidationGroup="group1"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ForeColor="#FF3300" ValidationGroup="group1" ControlToValidate="txtUserName" ToolTip="UserName cannot be empty"></asp:RequiredFieldValidator>
+                    <br />
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" placeholder="Enter Password" ValidationGroup="group1"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPassword" ValidationGroup="group1" ErrorMessage="*" ForeColor="#FF3300" ToolTip="Password cannot be empty"></asp:RequiredFieldValidator>
+                    <br />
+                    <asp:Button ID="btnSend" runat="server" Text="Send" OnClick="btnSend_Click" ValidationGroup="group1"/>
+                </asp:Panel>
+                <br />
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
