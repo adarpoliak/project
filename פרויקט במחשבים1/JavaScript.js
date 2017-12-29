@@ -2,9 +2,7 @@
         toggelClass("Li3");
         toggelClass("LogOut");
         toggelClass("Li2");
-        if (`<%= Session["Admin"]%>` == "Admin") {
-            toggelClass("admin-link");
-        }
+
 }
 
 function toggelClass(name) {

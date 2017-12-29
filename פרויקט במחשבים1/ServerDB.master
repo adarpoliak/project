@@ -7,7 +7,14 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="StyleSheet.css" rel="stylesheet" />
-    <script src="JavaScript.js"></script>
+    <script src="JavaScript.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function CheckAdmin(){
+           if ('<%= Session["User"] %>' == "Admin") {
+                toggelClass("admin-link");
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -18,7 +25,7 @@
                     <li><a href="SignUp.aspx">SignUp</a></li>
                     <li id="admin-link" class="loged-out"><a  href="AdminPage.aspx" >AdminPage</a></li>
                     <li style="float: right;" class="loged-in" id="Li3">
-                        <asp:Button ID="Button1" runat="server" Text="sign in" OnClick="Button1_Click" UseSubmitBehavior="false" CausesValidation="false" /></li>
+                        <asp:Button ID="Button1" runat="server" Text="sign in" OnClick="Button1_Click" OnClientClick="CheckAdmin" UseSubmitBehavior="false" CausesValidation="false" /></li>
                     <li runat="server" id="Li2" style="float: right;" class="loged-out">
                         <a id="Userlbl" runat="server"></a></li>
                     <li runat="server" id="Li1" style="float: right;">

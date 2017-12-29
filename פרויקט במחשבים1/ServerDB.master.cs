@@ -75,7 +75,8 @@ public partial class ServerDB : System.Web.UI.MasterPage
             conn.Close();
         }
         Userlbl.InnerText = "Welcome back " + Session["User"].ToString();
-        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "OnLoad()", true);
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "OnLoad(), CheckAdmin()", true);
+        
     }
 
     protected void LogOut_Click(object sender, EventArgs e)
