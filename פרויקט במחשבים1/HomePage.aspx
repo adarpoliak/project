@@ -6,6 +6,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h1>Home Page</h1>
-
+    <a href="ProfilePage.aspx">ProfilePage.aspx</a>
+    <a></a>
+    <a></a>
+    <a></a>
+    <a></a>
 </asp:Content>
 

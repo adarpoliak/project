@@ -12,30 +12,11 @@ public partial class ServerDB : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
     }
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        PopUp(Panel1);
-    }
-
-    public static void PopUp(System.Web.UI.WebControls.Panel pnl)
-    {
-        if (pnl.Visible)
-            pnl.Visible = false;
-        else
-            pnl.Visible = true;
-    }
-
-    protected void Button2_Click(object sender, EventArgs e)
-    {
-        PopUp(Panel1);
-    }
-
     protected void btnSend_Click(object sender, EventArgs e)
     {
         string UserName = txtUserName.Text, Password = txtPassword.Text, DBpassword, FirstName;
         if(UserName == "Admin" && Password == "Admin")
         {
-            PopUp(Panel1);
             Session["User"] = "Admin";
             
         }
@@ -59,7 +40,6 @@ public partial class ServerDB : System.Web.UI.MasterPage
 
                 if (DBpassword.Length > 0 && Password == DBpassword)
                 {
-                    PopUp(Panel1);
                     Session["User"] = FirstName;
                 }
                 else if (DBpassword.Length > 0 && Password != DBpassword)
