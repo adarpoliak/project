@@ -1,9 +1,8 @@
-﻿
-body {
-background-color:lightgrey;
+﻿body {
+    background-color:lightgray;
+    z-index:0;
 }
-
-
+/*Sign-in design*/
 .box{
 position:absolute;
 top:50%;
@@ -15,30 +14,19 @@ background-color: rgba(0,0,0,.8);
 box-sizing: border-box;
 box-shadow: 0 15px 25px rgba(0,0,0,.5);
 border-radius: 10px;
-transition:transform .7s ease;
-z-index:1;
+z-index:3;
 }
-
-.box2{
-position:fixed;
-left:34%;
-right:50%;
-width: 400px;
-padding: 40px;
-background-color:#333;
-box-sizing: border-box;
-z-index:0;
-}
-.box h2, .box2 h2 {
+.box h2 {
 padding:0;
 margin:0;
 color:#fff;
 text-align:center;
 }
-.box .inputBox, .box2 .inputBox{
+.box .inputBox{
 position:relative;
+visibility:inherit;
 }
-.box .inputBox input, .box2 .inputBox input{
+.box .inputBox input{
 width:100%;
 padding:10px 0;
 font-size:12px;
@@ -49,7 +37,7 @@ outline:none;
 background-color:transparent;
 border-bottom: 1px solid #fff;
 }
-.box .inputBox label, .box2 .inputBox label
+.box .inputBox label
 {
 position:absolute;
 top:0;
@@ -58,12 +46,13 @@ padding:10px 0;
 font-size:12px;
 color:#fff;
 pointer-events:none;
-transition:.5s;
+visibility:inherit;
+}
+.transition{
+    transition:0.2s !important;
 }
 .box .inputBox input:focus:valid ~ label,
-.box2 .inputBox input:focus:valid ~ label,
-.box .inputBox input:valid ~ label,
-.box2 .inputBox input:valid ~ label
+.box .inputBox input:valid ~ label
     {
     top:-14px;
     left:0;
@@ -71,10 +60,13 @@ transition:.5s;
     font-size:8px;
 
 }
-
-
-.box .inputBox input:focus:not(:valid) ~ label,
-.box2 .inputBox input:focus:not(:valid) ~ label
+.close-btn {
+    top:0;
+    right:-10%;
+    position:absolute;
+    background-color:red !important;
+}
+.box .inputBox input:focus:not(:valid) ~ label
 {
     top:-14px;
     left:0 ;
@@ -82,24 +74,11 @@ transition:.5s;
     font-size:8px ;
     
 }
-
-.box2 .inputBox .zzz ~label{
-    top:-14px   !important;
-    left:0      !important;
-    color:red   !important;
-    font-size:8px   !important;
-}
-
-.box2 .inputBox .zzz{
-    border-bottom:1px solid red     !important;
-}
-.box .inputBox input:focus:not(:valid) ,
-.box2 .inputBox input:focus:not(:valid)
+.box .inputBox input:focus:not(:valid)
 {
         border-bottom:1px solid red;
 }
-
-.box input[type = "submit"], .box input[type = "button"], .box2 input[type = "submit"], .box2 input[type = "button"]{
+.box input[type = "submit"], .box input[type = "button"]{
     background-color:transparent;
     padding: 10px 20px;
     border:none;
@@ -113,76 +92,81 @@ transition:.5s;
     transform:translateX(175%);
 }
 
-.show{
-    visibility:visible;
+/*nav menu design*/
+ul, ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
-
-.hide{
+ul>li {
+    display:inline-block;
+    border-right:1px solid #bbb !important;
+}
+li:last-child{
+    border-right:none;
+}
+ul>li a, .dropbtn{
+    margin: 12px;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 7px 8px;
+    text-decoration: none;
+    font-size:16px;
+}
+li input[type="button"]{
+    border:0;
+    color: white;
+    text-align: center;
+    padding: 7px 8px;
+    font-size:16px;
+    background-color: transparent;
+    margin:12px;
+}
+ul>li.dropdown{
+    display: inline-block;
+}
+li:hover, .dropdown:hover .dropbtn{
+    background-color: #111;
+}
+.dropdown-content{
     visibility:hidden;
-}
-
-header{
-    background:#333;
-    color:#fff;
-    padding:20px;
-    position: relative;
-}
-
-.site-title{
-    margin-left:100px;
-    font-size:1rem;
-}
-
-.nav-toggle{
     position:absolute;
-    top:30px;
-    cursor:pointer;
+    min-width:160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index:2;
+    background-color: #333;
+    border-top:1px solid #bbb;
+    right:7%;/*makes the content drop to the right*/
+    
 }
-
- nav a, nav span{
-    color:#fff;
-    text-decoration:none;
+.dropdown-content ol>li:hover{
+    background-color: #111;
 }
-
- nav li{
-     list-style:none;
- }
-
- .main-navigation{
-     position:fixed;
-     top:0;
-     left:0;
-     width:100%;
-     height:100%;
-     background:#222;
-     opacity:0.7;
-     text-align:center;
-     transform: translateX(-100%);
-     transition: transform 0.6s ease;
-     z-index:1;
- }
-
-
- .open{
-    transform: translateX(0);
- }
-
-
- .main-navigation ul{
-     margin:0;
-     padding:0;
- }
-
- .main-navigation ul a, .main-navigation ul span{
-     padding: 10px 20px;
-     display: block;
-     opacity:1;
- }
-
- .main-navigation ul a:hover, .main-navigation ul span:hover{
-     background:#333;
- }
-
- .open{
-    top:0%;
- }
+.dropdown-content ol>li {
+    overflow:hidden;
+    height:0;
+    -webkit-transition:height 100ms ease-in-out;
+    -moz-transition:height 100ms ease-in-out;
+    -o-transition:height 100ms ease-in-out;
+    transition:height 100ms ease-in-out;
+}
+.dropdown:hover .dropdown-content {
+visibility:visible;
+display:block;
+}
+.dropdown:hover .dropdown-content li{
+    height:50px;
+}
+.loged-out
+{
+    display:none !important;
+}
+.loged-in {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    font-size:16px;
+}

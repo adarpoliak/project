@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="posterID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddPostResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostTitle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostTitleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostTitleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostContentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostTitleByPoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostTitleByPosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostTitleByPosterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostContentByPoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostContentByPosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostContentByPosterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPostTitle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPostTitleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetPostTitleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPostTitleByPoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPostTitleByPosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetPostTitleByPosterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPostContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPostContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetPostContentResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCommentPostByPoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCommentPostByPosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetCommentPostByPosterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="postID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeletePostResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePostByPoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posterID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePostByPosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeletePostByPosterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddComment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="posterID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCommentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddCommentResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommentContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommentContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommentContentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommentContentByPoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommentContentByPosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommentContentByPosterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCommentContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCommentContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetCommentContentResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCommentContentByPoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCommentContentByPosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetCommentContentByPosterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteComment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="postID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCommentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCommentResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCommentByPoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="posterID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCommentByPosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCommentByPosterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddPostSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPost" />
+  </wsdl:message>
+  <wsdl:message name="AddPostSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostTitleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostTitle" />
+  </wsdl:message>
+  <wsdl:message name="GetPostTitleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostContentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostContent" />
+  </wsdl:message>
+  <wsdl:message name="GetPostContentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostTitleByPosterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostTitleByPoster" />
+  </wsdl:message>
+  <wsdl:message name="GetPostTitleByPosterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostTitleByPosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostContentByPosterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostContentByPoster" />
+  </wsdl:message>
+  <wsdl:message name="GetPostContentByPosterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostContentByPosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPostTitleSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPostTitle" />
+  </wsdl:message>
+  <wsdl:message name="SetPostTitleSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPostTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPostTitleByPosterSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPostTitleByPoster" />
+  </wsdl:message>
+  <wsdl:message name="SetPostTitleByPosterSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPostTitleByPosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPostContentSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPostContent" />
+  </wsdl:message>
+  <wsdl:message name="SetPostContentSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPostContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCommentPostByPosterSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCommentPostByPoster" />
+  </wsdl:message>
+  <wsdl:message name="SetCommentPostByPosterSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCommentPostByPosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePostSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePost" />
+  </wsdl:message>
+  <wsdl:message name="DeletePostSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePostResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePostByPosterSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePostByPoster" />
+  </wsdl:message>
+  <wsdl:message name="DeletePostByPosterSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePostByPosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCommentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddComment" />
+  </wsdl:message>
+  <wsdl:message name="AddCommentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentContentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCommentContent" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentContentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommentContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentContentByPosterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCommentContentByPoster" />
+  </wsdl:message>
+  <wsdl:message name="GetCommentContentByPosterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommentContentByPosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCommentContentSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCommentContent" />
+  </wsdl:message>
+  <wsdl:message name="SetCommentContentSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCommentContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCommentContentByPosterSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCommentContentByPoster" />
+  </wsdl:message>
+  <wsdl:message name="SetCommentContentByPosterSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCommentContentByPosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCommentSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteComment" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCommentSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCommentByPosterSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCommentByPoster" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCommentByPosterSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCommentByPosterResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ForumWSSoap">
+    <wsdl:operation name="AddPost">
+      <wsdl:input message="tns:AddPostSoapIn" />
+      <wsdl:output message="tns:AddPostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTitle">
+      <wsdl:input message="tns:GetPostTitleSoapIn" />
+      <wsdl:output message="tns:GetPostTitleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostContent">
+      <wsdl:input message="tns:GetPostContentSoapIn" />
+      <wsdl:output message="tns:GetPostContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTitleByPoster">
+      <wsdl:input message="tns:GetPostTitleByPosterSoapIn" />
+      <wsdl:output message="tns:GetPostTitleByPosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostContentByPoster">
+      <wsdl:input message="tns:GetPostContentByPosterSoapIn" />
+      <wsdl:output message="tns:GetPostContentByPosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPostTitle">
+      <wsdl:input message="tns:SetPostTitleSoapIn" />
+      <wsdl:output message="tns:SetPostTitleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPostTitleByPoster">
+      <wsdl:input message="tns:SetPostTitleByPosterSoapIn" />
+      <wsdl:output message="tns:SetPostTitleByPosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPostContent">
+      <wsdl:input message="tns:SetPostContentSoapIn" />
+      <wsdl:output message="tns:SetPostContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentPostByPoster">
+      <wsdl:input message="tns:SetCommentPostByPosterSoapIn" />
+      <wsdl:output message="tns:SetCommentPostByPosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePost">
+      <wsdl:input message="tns:DeletePostSoapIn" />
+      <wsdl:output message="tns:DeletePostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePostByPoster">
+      <wsdl:input message="tns:DeletePostByPosterSoapIn" />
+      <wsdl:output message="tns:DeletePostByPosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <wsdl:input message="tns:AddCommentSoapIn" />
+      <wsdl:output message="tns:AddCommentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentContent">
+      <wsdl:input message="tns:GetCommentContentSoapIn" />
+      <wsdl:output message="tns:GetCommentContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentContentByPoster">
+      <wsdl:input message="tns:GetCommentContentByPosterSoapIn" />
+      <wsdl:output message="tns:GetCommentContentByPosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentContent">
+      <wsdl:input message="tns:SetCommentContentSoapIn" />
+      <wsdl:output message="tns:SetCommentContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentContentByPoster">
+      <wsdl:input message="tns:SetCommentContentByPosterSoapIn" />
+      <wsdl:output message="tns:SetCommentContentByPosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteComment">
+      <wsdl:input message="tns:DeleteCommentSoapIn" />
+      <wsdl:output message="tns:DeleteCommentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCommentByPoster">
+      <wsdl:input message="tns:DeleteCommentByPosterSoapIn" />
+      <wsdl:output message="tns:DeleteCommentByPosterSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ForumWSSoap" type="tns:ForumWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddPost">
+      <soap:operation soapAction="http://tempuri.org/AddPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTitle">
+      <soap:operation soapAction="http://tempuri.org/GetPostTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostContent">
+      <soap:operation soapAction="http://tempuri.org/GetPostContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTitleByPoster">
+      <soap:operation soapAction="http://tempuri.org/GetPostTitleByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostContentByPoster">
+      <soap:operation soapAction="http://tempuri.org/GetPostContentByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPostTitle">
+      <soap:operation soapAction="http://tempuri.org/SetPostTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPostTitleByPoster">
+      <soap:operation soapAction="http://tempuri.org/SetPostTitleByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPostContent">
+      <soap:operation soapAction="http://tempuri.org/SetPostContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentPostByPoster">
+      <soap:operation soapAction="http://tempuri.org/SetCommentPostByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePost">
+      <soap:operation soapAction="http://tempuri.org/DeletePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePostByPoster">
+      <soap:operation soapAction="http://tempuri.org/DeletePostByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <soap:operation soapAction="http://tempuri.org/AddComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentContent">
+      <soap:operation soapAction="http://tempuri.org/GetCommentContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentContentByPoster">
+      <soap:operation soapAction="http://tempuri.org/GetCommentContentByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentContent">
+      <soap:operation soapAction="http://tempuri.org/SetCommentContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentContentByPoster">
+      <soap:operation soapAction="http://tempuri.org/SetCommentContentByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteComment">
+      <soap:operation soapAction="http://tempuri.org/DeleteComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCommentByPoster">
+      <soap:operation soapAction="http://tempuri.org/DeleteCommentByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ForumWSSoap12" type="tns:ForumWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddPost">
+      <soap12:operation soapAction="http://tempuri.org/AddPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTitle">
+      <soap12:operation soapAction="http://tempuri.org/GetPostTitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostContent">
+      <soap12:operation soapAction="http://tempuri.org/GetPostContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTitleByPoster">
+      <soap12:operation soapAction="http://tempuri.org/GetPostTitleByPoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostContentByPoster">
+      <soap12:operation soapAction="http://tempuri.org/GetPostContentByPoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPostTitle">
+      <soap12:operation soapAction="http://tempuri.org/SetPostTitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPostTitleByPoster">
+      <soap12:operation soapAction="http://tempuri.org/SetPostTitleByPoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPostContent">
+      <soap12:operation soapAction="http://tempuri.org/SetPostContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentPostByPoster">
+      <soap12:operation soapAction="http://tempuri.org/SetCommentPostByPoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePost">
+      <soap12:operation soapAction="http://tempuri.org/DeletePost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePostByPoster">
+      <soap12:operation soapAction="http://tempuri.org/DeletePostByPoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <soap12:operation soapAction="http://tempuri.org/AddComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentContent">
+      <soap12:operation soapAction="http://tempuri.org/GetCommentContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentContentByPoster">
+      <soap12:operation soapAction="http://tempuri.org/GetCommentContentByPoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentContent">
+      <soap12:operation soapAction="http://tempuri.org/SetCommentContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCommentContentByPoster">
+      <soap12:operation soapAction="http://tempuri.org/SetCommentContentByPoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteComment">
+      <soap12:operation soapAction="http://tempuri.org/DeleteComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCommentByPoster">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCommentByPoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ForumWS">
+    <wsdl:port name="ForumWSSoap" binding="tns:ForumWSSoap">
+      <soap:address location="http://localhost:59193/ForumWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ForumWSSoap12" binding="tns:ForumWSSoap12">
+      <soap12:address location="http://localhost:59193/ForumWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

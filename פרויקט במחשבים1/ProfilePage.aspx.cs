@@ -12,18 +12,7 @@ public partial class ProfilePage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //string c = "Data Source = (LocalDB)\\MSSQLLocalDB;";
-        //c += "AttachDbFilename = \"C:\\Users\\אדר\\Desktop\\פרויקט במחשבים1\\App_Data\\Database.mdf\";";
-        //c += "Integrated Security = True";
 
-        //SqlConnection conn = new SqlConnection(c);
-        //conn.Open();
-        //SqlCommand cmd = new SqlCommand("SELECT Image FROM Users WHERE UserName = @1;",conn);
-        //cmd.Parameters.AddWithValue("@1", Session["user"].ToString());
-        //SqlDataReader reader = cmd.ExecuteReader();
-        //imgGV.DataSource = reader;
-        //imgGV.DataBind();
-        //conn.Close();
     }
 
     protected void Button1_Click(object sender, EventArgs e)
