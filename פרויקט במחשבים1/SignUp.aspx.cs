@@ -37,12 +37,13 @@ public partial class SignUp : System.Web.UI.Page
                 conn.Open();
                 comm.ExecuteNonQuery();
                 conn.Close();
-                Session["User"] = txtUserName.Text;
+                Session["User"] = txtFirstName.Text;
                 Response.Redirect("HomePage.aspx");
             }
-            else //if UserName already exists
+            else
             {
-                Page.Response.Write("<script>alert('UserName already exists'); Validation();</script>");
+                MessageBox.Show("UserName Taken");
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "text", "Validation()", true);
             }
         }
 
@@ -70,42 +71,4 @@ public partial class SignUp : System.Web.UI.Page
 
 
 
-
-    protected void Button2_Click(object sender, EventArgs e)
-    {
-        if (Page.IsValid)
-        {
-            if (!CheckTaken(txtUserName.Text))
-            {
-                string c = "Data Source = (LocalDB)\\MSSQLLocalDB;";
-                c += "AttachDbFilename = \"C:\\Users\\אדר\\Desktop\\פרויקט במחשבים1\\App_Data\\Database.mdf\";";
-                c += "Integrated Security = True";
-
-                SqlConnection conn = new SqlConnection(c);
-
-
-                SqlCommand comm = new SqlCommand("INSERT INTO Users VALUES(@1, @2, @3, @4, @5);", conn);
-                comm.Parameters.AddWithValue("@1", txtFirstName.Text);
-                comm.Parameters.AddWithValue("@2", txtLastName.Text);
-                comm.Parameters.AddWithValue("@3", txtUserName.Text);
-                comm.Parameters.AddWithValue("@4", txtPassword.Text);
-                comm.Parameters.AddWithValue("@5", txtEmail.Text);
-
-                conn.Open();
-                comm.ExecuteNonQuery();
-                conn.Close();
-                Session["User"] = txtUserName.Text;
-                Response.Redirect("HomePage.aspx");
-            }
-            else //if UserName already exists
-            {
-                Page.Response.Write("<script>alert('UserName already exists'); Validation();</script>");
-            }
-        }
-
-        else
-        {
-
-        }
-    }
 }
