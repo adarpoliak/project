@@ -27,22 +27,25 @@
     <form id="form1" runat="server" autocomplete="off">
         <div>
             <div>
-                <ul>
-                    <li><a href="HomePage.aspx">Home Page</a></li>
-                    <li id="SignUp" runat="server" class="loged-in"><a href="SignUp.aspx">SignUp</a></li>
-                    <li id="AdminLink" class="loged-out" runat="server"><a  href="AdminPage.aspx" >AdminPage</a></li>
-                    <li style="float: right;" class="loged-in" id="Li3">
-                        <asp:Button ID="Button1" runat="server" Text="sign in" OnClientClick="Show(); return false;" UseSubmitBehavior="false" CausesValidation="false" /></li>
-                    <li runat="server" id="Li2" style="float: right;" class="loged-out dropdown">
-                        <asp:Button ID="Userlbl" runat="server" Text="welcome " UseSubmitBehavior="false" CausesValidation="false" CssClass="dropbtn" />
-                        <div class="dropdown-content">
-                            <ol>
-                                 <li><a href="#">See my profile</a></li>
-                                 <li><asp:Button ID="LogOut" runat="server" Text="logout" OnClick="LogOut_Click" CausesValidation="false" UseSubmitBehavior="false" /></li>
-                            </ol>
-                        </div>
-                    </li>
-                </ul>
+                <div><!-- menu div -->
+                    <ul>
+                        <li><a href="HomePage.aspx">Home Page</a></li>
+                        <li id="SignUp" runat="server" class="loged-in" style="clear:both;"><a href="SignUp.aspx">SignUp</a></li>
+                        <li><asp:TextBox ID="txtSearch" runat="server" TextMode="Search" placeholder="Search..." CssClass="searchBar"></asp:TextBox></li>
+                        <li id="AdminLink" class="loged-out" runat="server"><a  href="AdminPage.aspx" >AdminPage</a></li>
+                        <li style="float: right;" class="loged-in" id="Li3">
+                            <asp:Button ID="Button1" runat="server" Text="sign in" OnClientClick="Show(); return false;" UseSubmitBehavior="false" CausesValidation="false" /></li>
+                        <li runat="server" id="Li2" style="float: right;" class="loged-out dropdown">
+                            <asp:Button ID="Userlbl" runat="server" Text="welcome " UseSubmitBehavior="false" CausesValidation="false" CssClass="dropbtn" />
+                            <div class="dropdown-content">
+                                <ol>
+                                     <li><a href="#">See my profile</a></li>
+                                     <li><asp:Button ID="LogOut" runat="server" Text="logout" OnClick="LogOut_Click" CausesValidation="false" UseSubmitBehavior="false" /></li>
+                                </ol>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
         <div id="pop" class="box" style="visibility:hidden">
             <asp:Button ID="btnClose" runat="server" Text="X" OnClientClick="Close(); return false;" UseSubmitBehavior="false" CssClass="close-btn" />
             <h2>Sign In</h2>
