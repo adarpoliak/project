@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="SignUp.css" />
+    <link href="cssPages/SignUp.css" rel="stylesheet" />
     <script>
         function Validation() {
             document.getElementById("txtUserName").setCustomValidity("taken");
@@ -44,8 +44,7 @@
         </div>
         <br />
         <br />
-        <asp:Button ID="Button2" runat="server" Text="Button"  OnClick="Button2_Click" />
-        <asp:Button ID="Button1" runat="server" Text="Send" OnClick="Button1_Click"  />
+        <asp:Button ID="btnSend"  runat="server"  Text="Send" OnClick="Button1_Click"  />
     </div>
 </asp:Content>
 

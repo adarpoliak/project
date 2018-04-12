@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using ForumsWS;
 
 public partial class AdminPage : System.Web.UI.Page
 {
@@ -13,7 +14,7 @@ public partial class AdminPage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-
+        ForumWS ws = new ForumWS();
         SqlConnection conn = new SqlConnection(conString.constring);
 
         SqlCommand comm = new SqlCommand("SELECT Id, FirstName AS [First Name], LastName AS [Last Name], UserName, Upassword AS Password, Email FROM Users;", conn);
@@ -22,6 +23,9 @@ public partial class AdminPage : System.Web.UI.Page
         allUserGV.DataSource = reader;
         allUserGV.DataBind();
         conn.Close();
+
+        productsGV.DataSource = ws.GetAllProducts();
+        productsGV.DataBind();
     }
 
     protected void btnSearch_Click(object sender, EventArgs e)
@@ -99,6 +103,34 @@ public partial class AdminPage : System.Web.UI.Page
         conn.Close();
 
         Response.Redirect(Request.RawUrl);
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        ForumWS ws = new ForumWS();
+        string name, descrition, colors= "", category;
+        int price;
+        try
+        {
+            if (txtName.Text != "" && txtDescription.Text != "" && txtPrice.Text != "")
+            {
+                name = txtName.Text;
+                descrition = txtDescription.Text;
+                price = int.Parse(txtPrice.Text);
+                category = listCategory.Text;
+                foreach(ListItem colour in CheckBoxList1.Items)
+                {
+                    if (colour.Selected)
+                        colors += "$" + colour.Text;
+                }
+
+                ws.AddProduct(name, descrition, price, colors);
+            }
+        }
+        catch
+        {
+            Response.Write("Something weng wrong...");
+        }
     }
 }
 public static class conString

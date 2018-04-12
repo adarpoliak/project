@@ -1,0 +1,267 @@
+﻿body {
+    background-color: lightgray;
+    z-index: 0;
+}
+/*Sign-in design*/
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 40px;
+    background-color: rgba(0,0,0,.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+    z-index: 3;
+}
+
+    .box h2 {
+        padding: 0;
+        margin: 0;
+        color: #fff;
+        text-align: center;
+    }
+
+    .box .inputBox {
+        position: relative;
+        visibility: inherit;
+    }
+
+        .box .inputBox input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 12px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            border-bottom: 1px solid #fff;
+        }
+
+        .box .inputBox label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 12px;
+            color: #fff;
+            pointer-events: none;
+            visibility: inherit;
+        }
+
+.transition {
+    transition: 0.2s !important;
+}
+
+.box .inputBox input:focus:valid ~ label,
+.box .inputBox input:valid ~ label {
+    top: -14px;
+    left: 0;
+    color: #03a9f4;
+    font-size: 8px;
+}
+.box .inputbox input[class ~="notvalid"]{
+    border-bottom-color:red !important;
+}
+
+.box .inputbox input[class ~="notvalid"] ~label {
+    top: -14px !important;
+    left: 0 !important;
+    color: red !important;
+    font-size: 8px !important;
+} 
+
+.close-btn {
+    top: 0;
+    right: -10%;
+    position: absolute;
+    background-color: red !important;
+}
+
+.box .inputBox input:focus:not(:valid) ~ label {
+    top: -14px;
+    left: 0;
+    color: red;
+    font-size: 8px;
+}
+
+.box .inputBox input:focus:not(:valid) {
+    border-bottom: 1px solid red;
+}
+
+.box input[type = "submit"], .box input[type = "button"] {
+    background-color: transparent;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: coral;
+    cursor: pointer;
+    border-radius: 5px;
+    left: 50%;
+    right: 50%;
+    transform: translateX(175%);
+}
+
+/*nav menu design*/
+ul, ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+    ul > li {
+        display: inline-block;
+        border-right: 1px solid #bbb !important;
+    }
+
+li:last-child {
+    border-right: none;
+}
+
+ul > li a, .dropbtn {
+    margin: 12px;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 7px 8px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+li input[type="button"] {
+    border: 0;
+    color: white;
+    text-align: center;
+    padding: 7px 8px;
+    font-size: 16px;
+    background-color: transparent;
+    margin: 12px;
+}
+
+ul > li.dropdown {
+    display: inline-block;
+}
+
+li:hover, .dropdown:hover .dropbtn {
+    background-color: #111;
+}
+
+.dropdown-content {
+    visibility: hidden;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    background-color: #333;
+    border-top: 1px solid #bbb;
+    
+}
+.right{right: 1%; /*makes the content drop to the right*/}
+
+    .dropdown-content ol > li:hover {
+        background-color: #111;
+    }
+
+    .dropdown-content ol > li {
+        overflow: hidden;
+        height: 0;
+        -webkit-transition: height 100ms ease-in-out;
+        -moz-transition: height 100ms ease-in-out;
+        -o-transition: height 100ms ease-in-out;
+        transition: height 100ms ease-in-out;
+    }
+
+.dropdown:hover .dropdown-content {
+    visibility: visible;
+    display: block;
+}
+
+    .dropdown:hover .dropdown-content li {
+        height: 50px;
+    }
+
+.loged-out {
+    display: none !important;
+}
+
+.loged-in {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+.searchBar { /*12px == 1vw*/
+    width: 9vw;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    padding: 7px 8px;
+    font-size: 12px;
+    color: #fff;
+    margin: 12px;
+    border: none;
+    outline: none;
+    background-color: rgba(0,0,0,0);
+    background-image: url('../pics/searchicon.png');
+    padding-left: 2vw;
+    background-position: 0vw 0.7vh;
+    background-repeat: no-repeat;
+    background-size:1.5vw 1.5vw;
+    border-bottom: 1px solid #fff;
+}
+
+    .searchBar:focus {
+        width: 20vw;
+    }
+
+.box3 {
+    display:none;
+    background-color: silver;
+    box-sizing: border-box;
+    z-index: 0;
+    width:44vw;
+    height:50vh;
+    text-align:center;
+}
+
+    .box3 input[type=password], .box3 input[type=text] {
+            width: 80%;
+            padding: 10px 0;
+            font-size: 12px;
+            color: black;
+            margin-bottom: 30px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            border-bottom: 1px solid #fff;
+    }
+    .box3 input[type=password]::-webkit-input-placeholder, .box3 input[type=text]::-webkit-input-placeholder{
+        color:black;
+    }
+    .dropbtn2{
+    background-color: lightgray;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+    .dropbtn2:hover, .dropbtn2:focus, .dropdown2:hover .dropbtn2,.dropdown2:focus .dropbtn2{
+         background-color: silver;
+    }
+    .dropdown2 {
+    position: relative;
+    display: inline-block;
+}
+    .show {display:block;}
+    .Errorlbl{
+        color:red;
+        text-decoration:underline solid;
+        font-weight:400;
+    }

@@ -2,455 +2,337 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="AddPost">
+      <s:element name="AddProduct">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="posterID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddPostResponse">
+      <s:element name="AddProductResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="AddPostResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="AddProductResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPostTitle">
+      <s:element name="GetAllProducts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllProductsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllProductsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPostTitleResponse">
+      <s:element name="GetProductName">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPostTitleResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="productId" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPostContent">
+      <s:element name="GetProductNameResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductNameResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPostContentResponse">
+      <s:element name="GetProductCategory">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPostContentResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="productId" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPostTitleByPoster">
+      <s:element name="GetProductCategoryResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductCategoryResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPostTitleByPosterResponse">
+      <s:element name="GetProductDescription">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPostTitleByPosterResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPostContentByPoster">
+      <s:element name="GetProductDescriptionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductDescriptionResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPostContentByPosterResponse">
+      <s:element name="GetProductColor">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPostContentByPosterResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetPostTitle">
+      <s:element name="GetProductColorResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductColorResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetPostTitleResponse">
+      <s:element name="GetProductPrice">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SetPostTitleResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetPostTitleByPoster">
+      <s:element name="GetProductPriceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="GetProductPriceResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetPostTitleByPosterResponse">
+      <s:element name="SetProductName">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SetPostTitleByPosterResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetPostContent">
+      <s:element name="SetProductNameResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SetProductNameResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetPostContentResponse">
+      <s:element name="SetProductDescription">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SetPostContentResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetCommentPostByPoster">
+      <s:element name="SetProductDescriptionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SetProductDescriptionResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetCommentPostByPosterResponse">
+      <s:element name="SetProductColor">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SetCommentPostByPosterResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="color" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeletePost">
+      <s:element name="SetProductColorResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="postID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SetProductColorResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeletePostResponse">
+      <s:element name="SetProductCategory">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="DeletePostResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="category" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeletePostByPoster">
+      <s:element name="SetProductCategoryResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="posterID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SetProductCategoryResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="DeletePostByPosterResponse">
+      <s:element name="SetProductPrice">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="DeletePostByPosterResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddComment">
+      <s:element name="SetProductPriceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="posterID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SetProductPriceResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AddCommentResponse">
+      <s:element name="DeleteProduct">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="AddCommentResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetCommentContent">
+      <s:element name="DeleteProductResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCommentContentResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCommentContentResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCommentContentByPoster">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetCommentContentByPosterResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCommentContentByPosterResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SetCommentContent">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="postId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SetCommentContentResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SetCommentContentResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SetCommentContentByPoster">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="posterId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SetCommentContentByPosterResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="SetCommentContentByPosterResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteComment">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="postID" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteCommentResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="DeleteCommentResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteCommentByPoster">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="posterID" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="DeleteCommentByPosterResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="DeleteCommentByPosterResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteProductResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="AddPostSoapIn">
-    <wsdl:part name="parameters" element="tns:AddPost" />
+  <wsdl:message name="AddProductSoapIn">
+    <wsdl:part name="parameters" element="tns:AddProduct" />
   </wsdl:message>
-  <wsdl:message name="AddPostSoapOut">
-    <wsdl:part name="parameters" element="tns:AddPostResponse" />
+  <wsdl:message name="AddProductSoapOut">
+    <wsdl:part name="parameters" element="tns:AddProductResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPostTitleSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPostTitle" />
+  <wsdl:message name="GetAllProductsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllProducts" />
   </wsdl:message>
-  <wsdl:message name="GetPostTitleSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPostTitleResponse" />
+  <wsdl:message name="GetAllProductsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllProductsResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPostContentSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPostContent" />
+  <wsdl:message name="GetProductNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductName" />
   </wsdl:message>
-  <wsdl:message name="GetPostContentSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPostContentResponse" />
+  <wsdl:message name="GetProductNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductNameResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPostTitleByPosterSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPostTitleByPoster" />
+  <wsdl:message name="GetProductCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductCategory" />
   </wsdl:message>
-  <wsdl:message name="GetPostTitleByPosterSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPostTitleByPosterResponse" />
+  <wsdl:message name="GetProductCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductCategoryResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPostContentByPosterSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPostContentByPoster" />
+  <wsdl:message name="GetProductDescriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductDescription" />
   </wsdl:message>
-  <wsdl:message name="GetPostContentByPosterSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPostContentByPosterResponse" />
+  <wsdl:message name="GetProductDescriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductDescriptionResponse" />
   </wsdl:message>
-  <wsdl:message name="SetPostTitleSoapIn">
-    <wsdl:part name="parameters" element="tns:SetPostTitle" />
+  <wsdl:message name="GetProductColorSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductColor" />
   </wsdl:message>
-  <wsdl:message name="SetPostTitleSoapOut">
-    <wsdl:part name="parameters" element="tns:SetPostTitleResponse" />
+  <wsdl:message name="GetProductColorSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductColorResponse" />
   </wsdl:message>
-  <wsdl:message name="SetPostTitleByPosterSoapIn">
-    <wsdl:part name="parameters" element="tns:SetPostTitleByPoster" />
+  <wsdl:message name="GetProductPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductPrice" />
   </wsdl:message>
-  <wsdl:message name="SetPostTitleByPosterSoapOut">
-    <wsdl:part name="parameters" element="tns:SetPostTitleByPosterResponse" />
+  <wsdl:message name="GetProductPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductPriceResponse" />
   </wsdl:message>
-  <wsdl:message name="SetPostContentSoapIn">
-    <wsdl:part name="parameters" element="tns:SetPostContent" />
+  <wsdl:message name="SetProductNameSoapIn">
+    <wsdl:part name="parameters" element="tns:SetProductName" />
   </wsdl:message>
-  <wsdl:message name="SetPostContentSoapOut">
-    <wsdl:part name="parameters" element="tns:SetPostContentResponse" />
+  <wsdl:message name="SetProductNameSoapOut">
+    <wsdl:part name="parameters" element="tns:SetProductNameResponse" />
   </wsdl:message>
-  <wsdl:message name="SetCommentPostByPosterSoapIn">
-    <wsdl:part name="parameters" element="tns:SetCommentPostByPoster" />
+  <wsdl:message name="SetProductDescriptionSoapIn">
+    <wsdl:part name="parameters" element="tns:SetProductDescription" />
   </wsdl:message>
-  <wsdl:message name="SetCommentPostByPosterSoapOut">
-    <wsdl:part name="parameters" element="tns:SetCommentPostByPosterResponse" />
+  <wsdl:message name="SetProductDescriptionSoapOut">
+    <wsdl:part name="parameters" element="tns:SetProductDescriptionResponse" />
   </wsdl:message>
-  <wsdl:message name="DeletePostSoapIn">
-    <wsdl:part name="parameters" element="tns:DeletePost" />
+  <wsdl:message name="SetProductColorSoapIn">
+    <wsdl:part name="parameters" element="tns:SetProductColor" />
   </wsdl:message>
-  <wsdl:message name="DeletePostSoapOut">
-    <wsdl:part name="parameters" element="tns:DeletePostResponse" />
+  <wsdl:message name="SetProductColorSoapOut">
+    <wsdl:part name="parameters" element="tns:SetProductColorResponse" />
   </wsdl:message>
-  <wsdl:message name="DeletePostByPosterSoapIn">
-    <wsdl:part name="parameters" element="tns:DeletePostByPoster" />
+  <wsdl:message name="SetProductCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:SetProductCategory" />
   </wsdl:message>
-  <wsdl:message name="DeletePostByPosterSoapOut">
-    <wsdl:part name="parameters" element="tns:DeletePostByPosterResponse" />
+  <wsdl:message name="SetProductCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:SetProductCategoryResponse" />
   </wsdl:message>
-  <wsdl:message name="AddCommentSoapIn">
-    <wsdl:part name="parameters" element="tns:AddComment" />
+  <wsdl:message name="SetProductPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:SetProductPrice" />
   </wsdl:message>
-  <wsdl:message name="AddCommentSoapOut">
-    <wsdl:part name="parameters" element="tns:AddCommentResponse" />
+  <wsdl:message name="SetProductPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:SetProductPriceResponse" />
   </wsdl:message>
-  <wsdl:message name="GetCommentContentSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCommentContent" />
+  <wsdl:message name="DeleteProductSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProduct" />
   </wsdl:message>
-  <wsdl:message name="GetCommentContentSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCommentContentResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetCommentContentByPosterSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCommentContentByPoster" />
-  </wsdl:message>
-  <wsdl:message name="GetCommentContentByPosterSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCommentContentByPosterResponse" />
-  </wsdl:message>
-  <wsdl:message name="SetCommentContentSoapIn">
-    <wsdl:part name="parameters" element="tns:SetCommentContent" />
-  </wsdl:message>
-  <wsdl:message name="SetCommentContentSoapOut">
-    <wsdl:part name="parameters" element="tns:SetCommentContentResponse" />
-  </wsdl:message>
-  <wsdl:message name="SetCommentContentByPosterSoapIn">
-    <wsdl:part name="parameters" element="tns:SetCommentContentByPoster" />
-  </wsdl:message>
-  <wsdl:message name="SetCommentContentByPosterSoapOut">
-    <wsdl:part name="parameters" element="tns:SetCommentContentByPosterResponse" />
-  </wsdl:message>
-  <wsdl:message name="DeleteCommentSoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteComment" />
-  </wsdl:message>
-  <wsdl:message name="DeleteCommentSoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteCommentResponse" />
-  </wsdl:message>
-  <wsdl:message name="DeleteCommentByPosterSoapIn">
-    <wsdl:part name="parameters" element="tns:DeleteCommentByPoster" />
-  </wsdl:message>
-  <wsdl:message name="DeleteCommentByPosterSoapOut">
-    <wsdl:part name="parameters" element="tns:DeleteCommentByPosterResponse" />
+  <wsdl:message name="DeleteProductSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProductResponse" />
   </wsdl:message>
   <wsdl:portType name="ForumWSSoap">
-    <wsdl:operation name="AddPost">
-      <wsdl:input message="tns:AddPostSoapIn" />
-      <wsdl:output message="tns:AddPostSoapOut" />
+    <wsdl:operation name="AddProduct">
+      <wsdl:input message="tns:AddProductSoapIn" />
+      <wsdl:output message="tns:AddProductSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPostTitle">
-      <wsdl:input message="tns:GetPostTitleSoapIn" />
-      <wsdl:output message="tns:GetPostTitleSoapOut" />
+    <wsdl:operation name="GetAllProducts">
+      <wsdl:input message="tns:GetAllProductsSoapIn" />
+      <wsdl:output message="tns:GetAllProductsSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPostContent">
-      <wsdl:input message="tns:GetPostContentSoapIn" />
-      <wsdl:output message="tns:GetPostContentSoapOut" />
+    <wsdl:operation name="GetProductName">
+      <wsdl:input message="tns:GetProductNameSoapIn" />
+      <wsdl:output message="tns:GetProductNameSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPostTitleByPoster">
-      <wsdl:input message="tns:GetPostTitleByPosterSoapIn" />
-      <wsdl:output message="tns:GetPostTitleByPosterSoapOut" />
+    <wsdl:operation name="GetProductCategory">
+      <wsdl:input message="tns:GetProductCategorySoapIn" />
+      <wsdl:output message="tns:GetProductCategorySoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPostContentByPoster">
-      <wsdl:input message="tns:GetPostContentByPosterSoapIn" />
-      <wsdl:output message="tns:GetPostContentByPosterSoapOut" />
+    <wsdl:operation name="GetProductDescription">
+      <wsdl:input message="tns:GetProductDescriptionSoapIn" />
+      <wsdl:output message="tns:GetProductDescriptionSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SetPostTitle">
-      <wsdl:input message="tns:SetPostTitleSoapIn" />
-      <wsdl:output message="tns:SetPostTitleSoapOut" />
+    <wsdl:operation name="GetProductColor">
+      <wsdl:input message="tns:GetProductColorSoapIn" />
+      <wsdl:output message="tns:GetProductColorSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SetPostTitleByPoster">
-      <wsdl:input message="tns:SetPostTitleByPosterSoapIn" />
-      <wsdl:output message="tns:SetPostTitleByPosterSoapOut" />
+    <wsdl:operation name="GetProductPrice">
+      <wsdl:input message="tns:GetProductPriceSoapIn" />
+      <wsdl:output message="tns:GetProductPriceSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SetPostContent">
-      <wsdl:input message="tns:SetPostContentSoapIn" />
-      <wsdl:output message="tns:SetPostContentSoapOut" />
+    <wsdl:operation name="SetProductName">
+      <wsdl:input message="tns:SetProductNameSoapIn" />
+      <wsdl:output message="tns:SetProductNameSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SetCommentPostByPoster">
-      <wsdl:input message="tns:SetCommentPostByPosterSoapIn" />
-      <wsdl:output message="tns:SetCommentPostByPosterSoapOut" />
+    <wsdl:operation name="SetProductDescription">
+      <wsdl:input message="tns:SetProductDescriptionSoapIn" />
+      <wsdl:output message="tns:SetProductDescriptionSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="DeletePost">
-      <wsdl:input message="tns:DeletePostSoapIn" />
-      <wsdl:output message="tns:DeletePostSoapOut" />
+    <wsdl:operation name="SetProductColor">
+      <wsdl:input message="tns:SetProductColorSoapIn" />
+      <wsdl:output message="tns:SetProductColorSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="DeletePostByPoster">
-      <wsdl:input message="tns:DeletePostByPosterSoapIn" />
-      <wsdl:output message="tns:DeletePostByPosterSoapOut" />
+    <wsdl:operation name="SetProductCategory">
+      <wsdl:input message="tns:SetProductCategorySoapIn" />
+      <wsdl:output message="tns:SetProductCategorySoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="AddComment">
-      <wsdl:input message="tns:AddCommentSoapIn" />
-      <wsdl:output message="tns:AddCommentSoapOut" />
+    <wsdl:operation name="SetProductPrice">
+      <wsdl:input message="tns:SetProductPriceSoapIn" />
+      <wsdl:output message="tns:SetProductPriceSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetCommentContent">
-      <wsdl:input message="tns:GetCommentContentSoapIn" />
-      <wsdl:output message="tns:GetCommentContentSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCommentContentByPoster">
-      <wsdl:input message="tns:GetCommentContentByPosterSoapIn" />
-      <wsdl:output message="tns:GetCommentContentByPosterSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SetCommentContent">
-      <wsdl:input message="tns:SetCommentContentSoapIn" />
-      <wsdl:output message="tns:SetCommentContentSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SetCommentContentByPoster">
-      <wsdl:input message="tns:SetCommentContentByPosterSoapIn" />
-      <wsdl:output message="tns:SetCommentContentByPosterSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteComment">
-      <wsdl:input message="tns:DeleteCommentSoapIn" />
-      <wsdl:output message="tns:DeleteCommentSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCommentByPoster">
-      <wsdl:input message="tns:DeleteCommentByPosterSoapIn" />
-      <wsdl:output message="tns:DeleteCommentByPosterSoapOut" />
+    <wsdl:operation name="DeleteProduct">
+      <wsdl:input message="tns:DeleteProductSoapIn" />
+      <wsdl:output message="tns:DeleteProductSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ForumWSSoap" type="tns:ForumWSSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="AddPost">
-      <soap:operation soapAction="http://tempuri.org/AddPost" style="document" />
+    <wsdl:operation name="AddProduct">
+      <soap:operation soapAction="http://tempuri.org/AddProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -458,8 +340,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostTitle">
-      <soap:operation soapAction="http://tempuri.org/GetPostTitle" style="document" />
+    <wsdl:operation name="GetAllProducts">
+      <soap:operation soapAction="http://tempuri.org/GetAllProducts" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -467,8 +349,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostContent">
-      <soap:operation soapAction="http://tempuri.org/GetPostContent" style="document" />
+    <wsdl:operation name="GetProductName">
+      <soap:operation soapAction="http://tempuri.org/GetProductName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -476,8 +358,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostTitleByPoster">
-      <soap:operation soapAction="http://tempuri.org/GetPostTitleByPoster" style="document" />
+    <wsdl:operation name="GetProductCategory">
+      <soap:operation soapAction="http://tempuri.org/GetProductCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -485,8 +367,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostContentByPoster">
-      <soap:operation soapAction="http://tempuri.org/GetPostContentByPoster" style="document" />
+    <wsdl:operation name="GetProductDescription">
+      <soap:operation soapAction="http://tempuri.org/GetProductDescription" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -494,8 +376,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetPostTitle">
-      <soap:operation soapAction="http://tempuri.org/SetPostTitle" style="document" />
+    <wsdl:operation name="GetProductColor">
+      <soap:operation soapAction="http://tempuri.org/GetProductColor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -503,8 +385,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetPostTitleByPoster">
-      <soap:operation soapAction="http://tempuri.org/SetPostTitleByPoster" style="document" />
+    <wsdl:operation name="GetProductPrice">
+      <soap:operation soapAction="http://tempuri.org/GetProductPrice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -512,8 +394,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetPostContent">
-      <soap:operation soapAction="http://tempuri.org/SetPostContent" style="document" />
+    <wsdl:operation name="SetProductName">
+      <soap:operation soapAction="http://tempuri.org/SetProductName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -521,8 +403,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetCommentPostByPoster">
-      <soap:operation soapAction="http://tempuri.org/SetCommentPostByPoster" style="document" />
+    <wsdl:operation name="SetProductDescription">
+      <soap:operation soapAction="http://tempuri.org/SetProductDescription" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -530,8 +412,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeletePost">
-      <soap:operation soapAction="http://tempuri.org/DeletePost" style="document" />
+    <wsdl:operation name="SetProductColor">
+      <soap:operation soapAction="http://tempuri.org/SetProductColor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -539,8 +421,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeletePostByPoster">
-      <soap:operation soapAction="http://tempuri.org/DeletePostByPoster" style="document" />
+    <wsdl:operation name="SetProductCategory">
+      <soap:operation soapAction="http://tempuri.org/SetProductCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -548,8 +430,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddComment">
-      <soap:operation soapAction="http://tempuri.org/AddComment" style="document" />
+    <wsdl:operation name="SetProductPrice">
+      <soap:operation soapAction="http://tempuri.org/SetProductPrice" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -557,53 +439,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCommentContent">
-      <soap:operation soapAction="http://tempuri.org/GetCommentContent" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCommentContentByPoster">
-      <soap:operation soapAction="http://tempuri.org/GetCommentContentByPoster" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetCommentContent">
-      <soap:operation soapAction="http://tempuri.org/SetCommentContent" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetCommentContentByPoster">
-      <soap:operation soapAction="http://tempuri.org/SetCommentContentByPoster" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteComment">
-      <soap:operation soapAction="http://tempuri.org/DeleteComment" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCommentByPoster">
-      <soap:operation soapAction="http://tempuri.org/DeleteCommentByPoster" style="document" />
+    <wsdl:operation name="DeleteProduct">
+      <soap:operation soapAction="http://tempuri.org/DeleteProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -614,8 +451,8 @@
   </wsdl:binding>
   <wsdl:binding name="ForumWSSoap12" type="tns:ForumWSSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="AddPost">
-      <soap12:operation soapAction="http://tempuri.org/AddPost" style="document" />
+    <wsdl:operation name="AddProduct">
+      <soap12:operation soapAction="http://tempuri.org/AddProduct" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -623,8 +460,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostTitle">
-      <soap12:operation soapAction="http://tempuri.org/GetPostTitle" style="document" />
+    <wsdl:operation name="GetAllProducts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllProducts" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -632,8 +469,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostContent">
-      <soap12:operation soapAction="http://tempuri.org/GetPostContent" style="document" />
+    <wsdl:operation name="GetProductName">
+      <soap12:operation soapAction="http://tempuri.org/GetProductName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -641,8 +478,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostTitleByPoster">
-      <soap12:operation soapAction="http://tempuri.org/GetPostTitleByPoster" style="document" />
+    <wsdl:operation name="GetProductCategory">
+      <soap12:operation soapAction="http://tempuri.org/GetProductCategory" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -650,8 +487,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostContentByPoster">
-      <soap12:operation soapAction="http://tempuri.org/GetPostContentByPoster" style="document" />
+    <wsdl:operation name="GetProductDescription">
+      <soap12:operation soapAction="http://tempuri.org/GetProductDescription" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -659,8 +496,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetPostTitle">
-      <soap12:operation soapAction="http://tempuri.org/SetPostTitle" style="document" />
+    <wsdl:operation name="GetProductColor">
+      <soap12:operation soapAction="http://tempuri.org/GetProductColor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -668,8 +505,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetPostTitleByPoster">
-      <soap12:operation soapAction="http://tempuri.org/SetPostTitleByPoster" style="document" />
+    <wsdl:operation name="GetProductPrice">
+      <soap12:operation soapAction="http://tempuri.org/GetProductPrice" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -677,8 +514,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetPostContent">
-      <soap12:operation soapAction="http://tempuri.org/SetPostContent" style="document" />
+    <wsdl:operation name="SetProductName">
+      <soap12:operation soapAction="http://tempuri.org/SetProductName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -686,8 +523,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetCommentPostByPoster">
-      <soap12:operation soapAction="http://tempuri.org/SetCommentPostByPoster" style="document" />
+    <wsdl:operation name="SetProductDescription">
+      <soap12:operation soapAction="http://tempuri.org/SetProductDescription" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -695,8 +532,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeletePost">
-      <soap12:operation soapAction="http://tempuri.org/DeletePost" style="document" />
+    <wsdl:operation name="SetProductColor">
+      <soap12:operation soapAction="http://tempuri.org/SetProductColor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -704,8 +541,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="DeletePostByPoster">
-      <soap12:operation soapAction="http://tempuri.org/DeletePostByPoster" style="document" />
+    <wsdl:operation name="SetProductCategory">
+      <soap12:operation soapAction="http://tempuri.org/SetProductCategory" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -713,8 +550,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddComment">
-      <soap12:operation soapAction="http://tempuri.org/AddComment" style="document" />
+    <wsdl:operation name="SetProductPrice">
+      <soap12:operation soapAction="http://tempuri.org/SetProductPrice" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -722,53 +559,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCommentContent">
-      <soap12:operation soapAction="http://tempuri.org/GetCommentContent" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCommentContentByPoster">
-      <soap12:operation soapAction="http://tempuri.org/GetCommentContentByPoster" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetCommentContent">
-      <soap12:operation soapAction="http://tempuri.org/SetCommentContent" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SetCommentContentByPoster">
-      <soap12:operation soapAction="http://tempuri.org/SetCommentContentByPoster" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteComment">
-      <soap12:operation soapAction="http://tempuri.org/DeleteComment" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteCommentByPoster">
-      <soap12:operation soapAction="http://tempuri.org/DeleteCommentByPoster" style="document" />
+    <wsdl:operation name="DeleteProduct">
+      <soap12:operation soapAction="http://tempuri.org/DeleteProduct" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

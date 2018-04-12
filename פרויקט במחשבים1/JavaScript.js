@@ -2,6 +2,7 @@
         toggelClass("Li3");
         toggelClass("Li2");
         toggelClass("Li1");
+        toggelClass("Li4");
 }
 
 function toggelClass(name) {
